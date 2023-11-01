@@ -16,10 +16,11 @@ const forecast = (latitude, longitude, callback) => {
       const description = body.current.weather_descriptions[0];
       const feelslike = body.current.feelslike;
       const windSpeed = body.current.wind_speed;
+      const humidity = body.current.humidity;
 
       callback(
         undefined,
-        `Right now it is ${description}. The wind speed is ${windSpeed} miles per second. It is currently ${temparture} degrees outside. It feels like ${feelslike} degrees outside.`
+        `Right now it is ${description}. The wind speed is ${windSpeed} miles per second. The humidity is ${humidity}%. It is currently ${temparture} degrees outside. It feels like ${feelslike} degrees outside.`
       );
     }
   });
