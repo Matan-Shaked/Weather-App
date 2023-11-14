@@ -37,7 +37,8 @@ app.get("/about", (req, res) => {
 app.get("/help", (req, res) => {
   res.render("help", {
     title: "Help",
-    helpText: "This is some helpful text.",
+    helpText:
+      "Write in the Weather menu a destination and get its actual live weather!",
     name: "Matan Shaked",
   });
 });
