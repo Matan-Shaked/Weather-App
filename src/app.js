@@ -36,7 +36,7 @@ app.get("/help", (req, res) => {
   res.render("help", {
     title: "Help",
     helpText:
-      "For any questions about the app about the GoOutWeather app, you are welcome to contact with me via email shkedo24@gmail.com.",
+      "For any questions about the GoOutWeather app, you are welcome to contact with me via email shkedo24@gmail.com.",
     name: "Matan Shaked",
   });
 });
