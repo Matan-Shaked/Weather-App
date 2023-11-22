@@ -2,24 +2,77 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/styles.css" />
-    <link rel="icon" href="img/weather-icon.png">
-    
-    <script src="js/app.js" defer></script>
     <title>Weather</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="icon" href="/img/weather-icon.png">
+    <script src="js/app.js" defer></script>
   </head>
   <body>
-    <div class="main-content">
-    {{>header}}
-    <p>Use this site to get your weather!</p>
-    <form>
-      <input placeholder="Location">
-      <button >Search</button>
-    </form>
-    <p id="message-1"></p>
-    <p id="message-2"></p>
+          {{>header}}
+    <div class="main_container">
+        <div class="upper_container">
+            <div class="form_container">
+              <form class="form" action="">
+                <button>
+                <i class="fa-solid fa-magnifying-glass fa-2xl "></i>
+                </button>
+              <input class="search_input" placeholder="Search"    
+              type="text" name="" id="">
+              </form>
+              <p id="message-1"></p>
+            </div>
+
+          <div class="forecast-container">
+            <div class="first_subcontainer">
+              <div class="date"></div>
+            </div>
+            <div class="second_subcontainer">
+              <div id="current_weather"></div>
+              <div class="time"></div>
+            </div>
+            <div class="third_subcontainer">
+              <div class="img_and_temparture_container">
+                  <div id="img_and_temparture">
+                    <div class="degrees"></div>
+                </div>
+              </div>
+              <div class="realfeel"></div>
+            </div>
+            <div class="fourth_subcontainer">
+              <div class="weather_description"></div>
+            </div>
+            <div class="grid_data_subcontainer">
+              <div id="flexbox1" class="flexbox_weather_data">
+                  <p class="wind_speed"></p>
+              </div>
+              <div id="flexbox2" class="flexbox_weather_data">
+                  <p class="wind_direction"></p>
+              </div>
+              <div id="flexbox3" class="flexbox_weather_data">
+                  <p class="humidity"></p>
+              </div>
+              <div id="flexbox4" class="flexbox_weather_data">
+                  <p class="UV_Index"></p>
+                  
+              </div>
+              <div id="flexbox5" class="flexbox_weather_data">
+                  <p class="location_title"></p>
+              </div>
+              <div id="flexbox6" class="flexbox_weather_data">
+                  <p class="location_coordinations"></p>
+              </div>
+
+            </div>
+          </div>
+
 
     </div>
+</div>
+
     {{>footer}}
     
   </body>

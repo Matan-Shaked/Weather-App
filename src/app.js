@@ -7,18 +7,18 @@ const forecast = require("./utils/forecast");
 const app = express();
 const port = process.env.PORT || 3000;
 
-//Define path for Express config
-const publicDirectoryPath = path.join(__dirname, "../public");
-const viewsPath = path.join(__dirname, "../templates/views");
-const partialsPath = path.join(__dirname, "../templates/partials");
+const viewDirectory = path.join(__dirname, "../templates/views");
+console.log(path.join(__dirname, "../templates/views"));
 
-//Setup handlebars engine and views location
+const partialDirectory = path.join(__dirname, "../templates/partials");
+console.log(path.join(__dirname, "../templates/partials"));
+
+const publicDirectory = path.join(__dirname, "../public");
+app.use(express.static(publicDirectory));
+
 app.set("view engine", "hbs");
-app.set("views", viewsPath);
-hbs.registerPartials(partialsPath);
-
-//Setup static directory to serve
-app.use(express.static(publicDirectoryPath));
+app.set("views", viewDirectory);
+hbs.registerPartials(partialDirectory);
 
 app.get("", (req, res) => {
   res.render("index", {
@@ -26,80 +26,106 @@ app.get("", (req, res) => {
     name: "Matan Shaked",
   });
 });
-
 app.get("/about", (req, res) => {
   res.render("about", {
-    title: "About me",
+    title: "About",
     name: "Matan Shaked",
   });
 });
-
 app.get("/help", (req, res) => {
   res.render("help", {
     title: "Help",
     helpText:
-      "Write in the Weather menu a destination and get its actual live weather!",
+      "For any questions about the app about the GoOutWeather app, you are welcome to contact with me via email shkedo24@gmail.com.",
     name: "Matan Shaked",
   });
 });
 
 app.get("/weather", (req, res) => {
   if (!req.query.address) {
-    return res.send({
-      error: "You must provide an address",
-    });
+    return res.send({ error: `You must provide a valid address` });
   }
 
-  geocode(
-    req.query.address,
-    (error, { latitude, longitude, location } = {}) => {
-      if (error) {
-        return res.send({ error });
-      }
-      forecast(latitude, longitude, (error, forecastData) => {
+  geocode(req.query.address, (error, geocodeData = {}) => {
+    if (error) {
+      return res.send({ error: error });
+    }
+
+    forecast(
+      geocodeData.latitude,
+      geocodeData.longitude,
+      (error, forecastData) => {
         if (error) {
-          return res.send({ error });
+          return res.send({ error: error });
         }
 
+        const {
+          city,
+          country,
+          region,
+          degrees,
+          wind,
+          windDirection,
+          weatherImage,
+          description,
+          humidity,
+          feelsLike,
+          UVIndex,
+        } = forecastData;
+        const { latitude, longitude, label } = geocodeData;
+
         res.send({
-          forecast: forecastData,
-          location,
+          city,
+          country,
+          region,
+          degrees,
+          wind,
+          windDirection,
+          weatherImage,
+          description,
+          humidity,
+          feelsLike,
+          UVIndex,
+          latitude,
+          longitude,
+          label,
           address: req.query.address,
         });
-      });
-    }
-  );
-});
-
-app.get("/products", (req, res) => {
-  if (!req.query.search) {
-    return res.send({
-      error: "You must provide a search term",
-    });
-  }
-
-  console.log(req.query.search);
-
-  res.send({
-    products: [],
+        // res.send({
+        //   city: forecastData.city,
+        //   country: forecastData.country,
+        //   region: forecastData.region,
+        //   degrees: forecastData.degrees,
+        //   wind: forecastData.wind,
+        //   windDirection: forecastData.windDirection,
+        //   weatherImage: forecastData.weatherImage,
+        //   description: forecastData.description,
+        //   humidity: forecastData.humidity,
+        //   feelsLike: forecastData.feelsLike,
+        //   UVIndex: forecastData.UVIndex,
+        //   latitude: geocodeData.latitude,
+        //   longitude: geocodeData.longitude,
+        //   label: geocodeData.label,
+        //   address: req.query.address,
+        // });
+      }
+    );
   });
 });
 
 app.get("/help/*", (req, res) => {
-  res.render("404", {
-    errorMessage: "Help article not found",
-    name: "Matan Shaked",
-  });
+  res.render("Help article not found");
 });
 
 app.get("*", (req, res) => {
   res.render("404", {
     title: "404",
+    errorText: "Page not found.",
     name: "Matan Shaked",
-    errorMessage: "Page not found",
   });
 });
 
+//
 app.listen(port, () => {
-  console.log(`Server is up on port ${port}`);
+  console.log(`server is up!`);
 });

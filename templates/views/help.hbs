@@ -2,19 +2,25 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/styles.css" />
-    <link rel="icon" href="img/weather-icon.png">
     <title>Help</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="icon" href="/img/weather-icon.png">
+    <script src="js/app.js" defer></script>
   </head>
   <body>
-    <div class="main-content">
+    <div class="main-content_help">
       {{>header}}
-    
-      <p>{{helpText}}</p>
-      
-    </div>
-
-
+      <div class="help_text_container">
+        <p class="help_text">{{helpText}}</p>
+        <br>
+        <p class="help_text" >You are also welcome to contact me via my LinkedIn Profile on Clicking <a id="linkedin" href="linkedin.com/in/matan-shaked-647788230/">here</a> </p>
+        <br>
+        <p class="help_text">Enjoy!</p>
+        </div>
+      </div>
     {{>footer}}
   </body>
 </html>

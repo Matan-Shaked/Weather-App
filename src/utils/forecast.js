@@ -1,28 +1,31 @@
 const request = require("postman-request");
 
 const forecast = (latitude, longitude, callback) => {
-  const url = `http://api.weatherstack.com/current?access_key=36b22dea6b16a9ae2d918621f7e29fad&query=${encodeURIComponent(
-    latitude,
-    longitude
-  )}&units=m`;
+  const urlWeather = `http://api.weatherstack.com/current?access_key=36b22dea6b16a9ae2d918621f7e29fad&query=${latitude},${longitude}&units=m`;
 
-  request({ url, json: true }, (error, { body }) => {
+  request({ url: urlWeather, json: true }, (error, response) => {
     if (error) {
-      callback("Unable to connect weather services!", undefined);
-    } else if (body.error) {
-      callback("Unable to find location. Try another serach", undefined);
-    } else {
-      const temparture = body.current.temperature;
-      const description = body.current.weather_descriptions[0];
-      const feelslike = body.current.feelslike;
-      const windSpeed = body.current.wind_speed;
-      const humidity = body.current.humidity;
-
-      callback(
-        undefined,
-        `Right now it is ${description}. The wind speed is ${windSpeed} miles per second. The humidity is ${humidity}%. It is currently ${temparture} degrees outside. It feels like ${feelslike} degrees outside.`
-      );
+      return callback(`Unable to connect to weather service.`, undefined);
     }
+
+    if (response.body.error) {
+      return console.log(`Unable to find location.`);
+    }
+
+    callback(undefined, {
+      city: response.body.location.name,
+      country: response.body.location.country,
+      region: response.body.location.region,
+      degrees: response.body.current.temperature,
+      wind: response.body.current.wind_speed,
+      windDirection: response.body.current.wind_dir,
+      weatherImage: response.body.current.weather_icons[0],
+      description: response.body.current.weather_descriptions[0],
+      humidity: response.body.current.humidity,
+      feelsLike: response.body.current.feelslike,
+      UVIndex: response.body.current.uv_index,
+      precipitation: response.body.current.precip,
+    });
   });
 };
 
