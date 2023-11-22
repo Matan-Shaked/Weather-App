@@ -189,7 +189,7 @@ weatherForm.addEventListener("submit", (e) => {
         if (!locationParagraph) {
           locationParagraph = document.createElement("p");
           locationParagraph.classList.add("locationPar");
-          locationParagraph.textContent = "Place";
+          locationParagraph.textContent = "";
           parentOfLocationParagraph.insertBefore(
             locationParagraph,
             locationTitle
