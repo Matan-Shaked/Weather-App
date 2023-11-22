@@ -5,7 +5,6 @@ const messageLoading = document.querySelector("#message-1");
 
 const locationTitle = document.querySelector(".location_title");
 
-
 const temperature = document.querySelector(".degrees");
 const realfeel = document.querySelector(".realfeel");
 const weatherDescription = document.querySelector(".weather_description");
@@ -29,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
   ];
 
   let currentIndex = 0;
-  console.log(currentIndex);
+  // console.log(currentIndex);
   function updatedBackgroundImage() {
     document.body.style.backgroundImage = backgroundImagesUrls[currentIndex];
     console.log(document.body.style.backgroundImage);
@@ -114,66 +113,105 @@ weatherForm.addEventListener("submit", (e) => {
           currentWeather.textContent = "Current Weather";
           temperature.textContent = `${degrees}°C`;
 
-          const weatherImg = document.createElement("img");
-          weatherImg.className = "weather_img";
           const parentOfWeatherImg =
             document.getElementById("img_and_temparture");
-          weatherImg.src = weatherImage;
-          parentOfWeatherImg.insertBefore(weatherImg, temperature.nextSibling);
+          let weatherImgPar = document.querySelector(".weather_img");
+          if (!weatherImgPar) {
+            weatherImgPar = document.createElement("img");
+            weatherImgPar.src = weatherImage;
+            weatherImgPar.classList.add("weather_img");
+            parentOfWeatherImg.insertBefore(
+              weatherImgPar,
+              temperature.nextSibling
+            );
+          } else {
+            weatherImgPar.src = weatherImage;
+          }
 
           realfeel.textContent = `RealFeel ${feelsLike}°C`;
           weatherDescription.textContent = description;
 
           windSpeed.textContent = `${wind} Km/h`;
-          const windGusts = document.createElement("p");
-          windGusts.textContent = `Wind Gusts`;
+
           const parentOfwindGusts = document.getElementById("flexbox1");
-          parentOfwindGusts.insertBefore(windGusts, windSpeed);
+          let windGusts = document.querySelector(".windGustPar");
+
+          if (!windGusts) {
+            windGusts = document.createElement("p");
+            windGusts.classList.add("windGustPar");
+            windGusts.textContent = `Wind Gusts`;
+            parentOfwindGusts.insertBefore(windGusts, windSpeed);
+          }
 
           windDirectionData.textContent = windDirection;
-          const windDirectionParagraph = document.createElement("p");
-          windDirectionParagraph.textContent = `Wind Direction`;
-
           const parentOfWindDirectionParagraph =
             document.getElementById("flexbox2");
-          parentOfWindDirectionParagraph.insertBefore(
-            windDirectionParagraph,
-            windDirectionData
-          );
+          let windDirectionParagraph = document.querySelector(".windDirPar");
+
+          if (!windDirectionParagraph) {
+            windDirectionParagraph = document.createElement("p");
+            windDirectionParagraph.classList.add("windDirPar");
+            windDirectionParagraph.textContent = `Wind Direction`;
+            parentOfWindDirectionParagraph.insertBefore(
+              windDirectionParagraph,
+              windDirectionData
+            );
+          }
 
           humidityData.textContent = `${humidity}%`;
-          const humidityParagraph = document.createElement("p");
-          humidityParagraph.textContent = `Humidity`;
           const parentOfHumidityParagraph = document.getElementById("flexbox3");
-          parentOfHumidityParagraph.insertBefore(
-            humidityParagraph,
-            humidityData
-          );
+          let humidityParagraph = document.querySelector(".humidityPar");
+
+          if (!humidityParagraph) {
+            humidityParagraph = document.createElement("p");
+            humidityParagraph.classList.add("humidityPar");
+            humidityParagraph.textContent = `Humidity`;
+            parentOfHumidityParagraph.insertBefore(
+              humidityParagraph,
+              humidityData
+            );
+          }
 
           uvData.textContent = UVIndex;
-          const UVIndexParagraph = document.createElement("p");
-          UVIndexParagraph.textContent = "UV Index";
           const parentOfUVIndexParagraph = document.getElementById("flexbox4");
-          parentOfUVIndexParagraph.insertBefore(UVIndexParagraph, uvData);
+          let UVIndexParagraph = document.querySelector(".uvPar");
+
+          if (!UVIndexParagraph) {
+            UVIndexParagraph = document.createElement("p");
+            humidityParagraph.classList.add("uvPar");
+            UVIndexParagraph.textContent = "UV Index";
+            parentOfUVIndexParagraph.insertBefore(UVIndexParagraph, uvData);
+          }
 
           locationTitle.textContent = `${city}, ${country}, ${region} `;
-          const locationParagraph = document.createElement("p");
-          locationParagraph.textContent = "Place";
           const parentOfLocationParagraph = document.getElementById("flexbox5");
-          parentOfLocationParagraph.insertBefore(
-            locationParagraph,
-            locationTitle
-          );
+          let locationParagraph = document.querySelector(".locationPar");
 
-          locationCoordinations.textContent = `${longitude}, ${latitude}`;
-          const coordinationsParagraph = document.createElement("p");
-          coordinationsParagraph.textContent = "Location";
+          if (!locationParagraph) {
+            locationParagraph = document.createElement("p");
+            locationParagraph.classList.add("locationPar");
+            locationParagraph.textContent = "Place";
+            parentOfLocationParagraph.insertBefore(
+              locationParagraph,
+              locationTitle
+            );
+          }
+
+          locationCoordinations.textContent = `${longitude}°, ${latitude}°`;
           const parentOfCoordinationsParagraph =
             document.getElementById("flexbox6");
-          parentOfCoordinationsParagraph.insertBefore(
-            coordinationsParagraph,
-            locationCoordinations
-          );
+          let coordinationsParagraph =
+            document.querySelector(".coordinationsPar");
+
+          if (!coordinationsParagraph) {
+            coordinationsParagraph = document.createElement("p");
+            locationParagraph.classList.add("coordinationsPar");
+            coordinationsParagraph.textContent = "Location";
+            parentOfCoordinationsParagraph.insertBefore(
+              coordinationsParagraph,
+              locationCoordinations
+            );
+          }
         }
       });
     }
