@@ -19,12 +19,13 @@ const currentWeather = document.querySelector("#current_weather ");
 
 document.addEventListener("DOMContentLoaded", function () {
   const backgroundImagesUrls = [
-    "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('img/iceland2.jpg')",
-    "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url('/img/valley2.jpg')",
-    "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url('/img/iceland3.jpg')",
-    "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url('/img/mountains2.jpg')",
-    "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url('/img/iceland4.jpg')",
-    "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url('/img/iceland5.jpg')",
+    "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('img/icelanda.jpg')",
+    "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url('/img/iceland3a.jpg')",
+    "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url('/img/valley2a.jpg')",
+    "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url('/img/mountains2a.jpg')",
+    "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url('/img/iceland4a.jpg')",
+    "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url('/img/iceland5a.jpg')",
+    "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url('/img/iceland6a.jpg')",
   ];
 
   let currentIndex = 0;
@@ -37,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   updatedBackgroundImage();
-  setInterval(updatedBackgroundImage, 30000);
+  setInterval(updatedBackgroundImage, 5000);
 });
 
 weatherForm.addEventListener("submit", (e) => {
