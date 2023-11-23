@@ -38,7 +38,7 @@ footer {
     margin-top: 16px;
     padding: 16px 0;
     position: absolute;
-    bottom: 5px;
+    bottom: -5px;
     width: 100vw;
     text-align: center;
 
