@@ -18,7 +18,7 @@ body {
     position: relative;
     /* border: 2px green solid; */
     background-repeat: no-repeat;
-    overflow: hidden
+    overflow: auto
         /* background-image: url('/img/alps.jpg'); */
 
         /* background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(/img/iceland.jpg);
@@ -92,6 +92,8 @@ header a {
     color: white;
     font-size: 18px;
     font-weight: 500;
+    text-align: center;
+    line-height: 2;
 }
 
 .weather_icons_container {
@@ -100,7 +102,6 @@ header a {
     display: flex;
     flex-direction: row;
     align-items: center;
-
     justify-content: space-between;
 }
 
@@ -212,7 +213,6 @@ button {
 }
 
 .forecast-container {
-    /* border: 2px solid orangered; */
     /* margin-top: 80px; */
     height: 450px;
     padding: 20px;
@@ -308,6 +308,46 @@ button {
     font-weight: 500;
 
 }
+
+@media only screen and (max-width: 600px) {
+
+    body {
+        background-size: 600px 1000px;
+
+    }
+
+
+    .form {
+        width: 200px;
+    }
+
+
+
+    .forecast-container {
+
+        width: 80vw;
+
+    }
+
+    .first_subcontainer {
+        text-align: center;
+    }
+
+    .third_subcontainer {
+        display: grid;
+        width: 100%;
+        grid-template-rows: repeat(2, 1fr);
+        height: 50px;
+        margin: 20px 0;
+    }
+
+    .weather_icons_container {
+
+        width: 80vw;
+
+    }
+}
+
 
 /* .location_title {} */
 
