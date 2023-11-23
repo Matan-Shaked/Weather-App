@@ -325,7 +325,8 @@ button {
 
     .forecast-container {
 
-        width: 80vw;
+        width: 90vw;
+
 
     }
 
@@ -345,6 +346,28 @@ button {
 
         width: 80vw;
 
+    }
+
+    .img_and_temparture_container {
+        margin-top: 10px;
+    }
+
+    .degrees {
+        color: black;
+        padding: 10px;
+        font-size: 30px;
+        font-weight: 600;
+    }
+
+    .weather_img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .realfeel {
+        color: black;
+        font-weight: 500;
+        font-size: 18px;
     }
 }
 
