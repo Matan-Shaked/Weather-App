@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   updatedBackgroundImage();
-  setInterval(updatedBackgroundImage, 5000);
+  setInterval(updatedBackgroundImage, 10000);
 });
 
 weatherForm.addEventListener("submit", (e) => {
