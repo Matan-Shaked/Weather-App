@@ -91,23 +91,6 @@ app.get("/weather", (req, res) => {
           label,
           address: req.query.address,
         });
-        // res.send({
-        //   city: forecastData.city,
-        //   country: forecastData.country,
-        //   region: forecastData.region,
-        //   degrees: forecastData.degrees,
-        //   wind: forecastData.wind,
-        //   windDirection: forecastData.windDirection,
-        //   weatherImage: forecastData.weatherImage,
-        //   description: forecastData.description,
-        //   humidity: forecastData.humidity,
-        //   feelsLike: forecastData.feelsLike,
-        //   UVIndex: forecastData.UVIndex,
-        //   latitude: geocodeData.latitude,
-        //   longitude: geocodeData.longitude,
-        //   label: geocodeData.label,
-        //   address: req.query.address,
-        // });
       }
     );
   });

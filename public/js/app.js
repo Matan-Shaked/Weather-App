@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
   ];
 
   let currentIndex = 0;
-  // console.log(currentIndex);
+
   function updatedBackgroundImage() {
     document.body.style.backgroundImage = backgroundImagesUrls[currentIndex];
     console.log(document.body.style.backgroundImage);
@@ -77,9 +77,6 @@ weatherForm.addEventListener("submit", (e) => {
             month: "long",
             day: "numeric",
           };
-          // const day = currentDate.getDate();
-          // const month = currentDate.getMonth() + 1;
-          // const year = currentDate.getFullYear();
 
           const formattedDate = currentDate.toLocaleDateString(
             "en-US",
@@ -99,10 +96,8 @@ weatherForm.addEventListener("submit", (e) => {
 
           const formattedTime = `${formattedHours}:${formattedMinutes}`;
           return formattedTime;
-          // dataTime.textContent = formattedTime;
         }
 
-        // setInterval(getCurrentTime, 1000);
         dataTime.textContent = getCurrentTime();
         const currentDate = getCurrentDate();
 

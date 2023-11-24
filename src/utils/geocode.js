@@ -23,7 +23,3 @@ const geocode = (address, callback) => {
 };
 
 module.exports = geocode;
-
-
-// https://tile.openweathermap.org/map/{temp_new}/{0}/{1}/{1}.png?appid=6c22f508d2033c9bc72eabef0dbb04a6
-// https://api.openweathermap.org/data/2.5/weather?lat=34.05513&lon=-118.25703&appid=6c22f508d2033c9bc72eabef0dbb04a6
